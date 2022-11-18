@@ -1,0 +1,25 @@
+{
+    "tests": [
+        {
+            "name": "test_avogadra (test_avogadro.TestAvogadro)",
+            "status": "passed"
+        },
+        {
+            "name": "test_beads (test_beadtracker.TestBead)",
+            "status": "passed"
+        },
+        {
+            "name": "test_beads_length (test_blobfinder.TestBlobs)",
+            "status": "passed"
+        },
+        {
+            "name": "test_beads_values (test_blobfinder.TestBlobs)",
+            "status": "passed",
+            "output": "13 Beads:\n"
+        }
+    ],
+    "leaderboard": [],
+    "visibility": "visible",
+    "execution_time": "5.27",
+    "score": 0.0
+}
