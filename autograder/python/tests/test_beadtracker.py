@@ -24,32 +24,38 @@ class TestBead(unittest.TestCase):
 
         self.bf = BlobFinder(Picture('../dataset/run_1/frame00001.jpg'), self.tau)
         self.sb = SolutionBlobFinder(Picture('../dataset/run_1/frame00001.jpg'), self.tau)
+
         self.prevBeads = self.bf.getBeads(self.P)
         self.prevBeads_sol = self.bf.getBeads(self.P)
 
+        self.bf = BlobFinder(Picture('../dataset/run_1/frame00002.jpg'), self.tau)
+        self.sb = SolutionBlobFinder(Picture('../dataset/run_1/frame00002.jpg'), self.tau)
+
+        self.currBeads = self.bf.getBeads(self.P)
+        self.currBeads_sol = self.bf.getBeads(self.P)
+
+
+        
 #     @weight(1)
 #     @number("1.1")
-    def test_beads(self):
-        image=['../dataset/run_1/frame00002.jpg']
-        def trackbead(Blobfinder,prevBeads):
-            list=[]
-            for i in range(len(image)):
-                bf = BlobFinder(Picture(image[i]), self.tau)
-                currBeads = bf.getBeads(self.P)
-                for currBead in currBeads:
-                    min_dist = float('inf')
-                    for prevBead in prevBeads:
-                        d = currBead.distanceTo(prevBead)
-                        if d <= self.delta and d < min_dist:
-                            min_dist = d
-                    if min_dist != float('inf'):
-                        list.append(round(min_dist,4))
-                prevBeads = currBeads
+    def test_bead_tracker(self):
+
+        def trackbead(prevBeads, currBeads):
+            list = []                    
+            for currBead in currBeads:
+                min_dist = float('inf')
+                for prevBead in prevBeads:
+                    d = currBead.distanceTo(prevBead)
+                    if d <= self.delta and d < min_dist:
+                        min_dist = d
+                if min_dist != float('inf'):
+                    list.append(round(min_dist,4))
+            prevBeads = currBeads
             return list
 
-        list=trackbead(BlobFinder,self.prevBeads)
-        sol_list=trackbead(SolutionBlobFinder,self.prevBeads_sol)
-        self.assertListEqual(list,sol_list)
+        submission_list = trackbead(self.prevBeads, self.currBeads)
+        solution_list   = trackbead(self.prevBeads_sol, self.currBeads_sol)
+        self.assertListEqual(submission_list, solution_list)
 
 
 

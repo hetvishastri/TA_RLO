@@ -5,7 +5,7 @@
             "status": "passed"
         },
         {
-            "name": "test_beads (test_beadtracker.TestBead)",
+            "name": "test_bead_tracker (test_beadtracker.TestBead)",
             "status": "passed"
         },
         {
@@ -20,6 +20,6 @@
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "5.27",
+    "execution_time": "11.40",
     "score": 0.0
 }
