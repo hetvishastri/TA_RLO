@@ -1,6 +1,11 @@
 // Name        : Tyler Fricks
 // Email       : tyler.fricks@gmail.com
 // Description :
+package com.gradescope.avogadro;
+import com.gradescope.avogadro.Picture;
+import com.gradescope.avogadro.BlobList;
+import com.gradescope.avogadro.Luminance;
+import com.gradescope.avogadro.Blob;
 
 public class BlobFinder {
     private Picture img;

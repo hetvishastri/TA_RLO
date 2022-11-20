@@ -1,4 +1,4 @@
-package src.main.java.com.gradescope.avogadro;
+package com.gradescope.avogadro;
 /*************************************************************************
  *  Compilation:  javac Luminance.java
  *  Execution:    java Luminance r1 g1 b1 r2 g2 b2

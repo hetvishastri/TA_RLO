@@ -1,4 +1,4 @@
-package src.main.java.com.gradescope.avogadro;
+package com.gradescope.avogadro;
 // Name        : Tyler Fricks
 // Email       : tyler.fricks@gmail.com
 // Description :

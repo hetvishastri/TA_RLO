@@ -1,6 +1,7 @@
 // Name        : Tyler Fricks
 // Email       : tyler.fricks@gmail.com
 // Description :
+package com.gradescope.avogadro;
 import java.util.*;
 import java.lang.Math;
 

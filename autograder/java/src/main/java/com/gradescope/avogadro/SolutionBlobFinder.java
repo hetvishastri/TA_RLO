@@ -1,13 +1,11 @@
-package src.main.java.com.gradescope.avogadro;
-import src.main.java.com.gradescope.avogadro.Blob;
-import src.main.java.com.gradescope.avogadro.BlobFinder;
-import src.main.java.com.gradescope.avogadro.BlobList;
-import src.main.java.com.gradescope.avogadro.Luminance;
-import src.main.java.com.gradescope.avogadro.Picture;
-
 // Name        : Tyler Fricks
 // Email       : tyler.fricks@gmail.com
 // Description :
+package com.gradescope.avogadro;
+import com.gradescope.avogadro.Picture;
+import com.gradescope.avogadro.BlobList;
+import com.gradescope.avogadro.Luminance;
+import com.gradescope.avogadro.Blob;
 
 public class SolutionBlobFinder {
     private Picture img;

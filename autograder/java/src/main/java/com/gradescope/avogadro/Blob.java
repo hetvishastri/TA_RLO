@@ -1,7 +1,7 @@
 // Name        : Tyler Fricks
 // Email       : tyler.fricks@gmail.com
 // Description :
-
+package com.gradescope.avogadro;
 public class Blob {
     private int ySum = 0;
     private int xSum = 0;

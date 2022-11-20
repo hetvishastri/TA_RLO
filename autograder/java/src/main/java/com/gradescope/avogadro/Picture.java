@@ -16,7 +16,7 @@
  *   - see also GrayPicture.java for a grayscale version
  *
  *************************************************************************/
-
+package com.gradescope.avogadro;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Toolkit;

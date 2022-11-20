@@ -6,7 +6,8 @@
  *
  *************************************************************************/
 
-import java.io.BufferedInputStream;
+package com.gradescope.avogadro;
+ import java.io.BufferedInputStream;
 import java.util.Locale;
 import java.util.Scanner;
 
