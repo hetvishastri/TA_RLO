@@ -1,4 +1,4 @@
-from solution_blob_finder import BlobFinder
+from solution_blob_finder import SolutionBlobFinder
 import sys
 
 sys.path.insert(1, '/Users/hetvihirenshastri/Desktop/Documents/UMass/my_courses/TA/autograder/python/py_libraries')
@@ -17,14 +17,16 @@ Delta). """
 """
 we have to add jpg files one by one in order to show output.
 """
-def main():
-    P = int(sys.argv[1])
-    tau = float(sys.argv[2])
-    delta = float(sys.argv[3])
-    bf = BlobFinder(Picture(sys.argv[4]), tau)
+def solutiontrackBeads(P, tau, delta, bf,image):
+    #P = int(sys.argv[1])
+    #tau = float(sys.argv[2])
+    #delta = float(sys.argv[3])
+    #bf = BlobFinder(Picture(sys.argv[4]), tau)
     prevBeads = bf.getBeads(P)
-    for i in range(5, len(sys.argv)):
-        bf = BlobFinder(Picture(sys.argv[i]), tau)
+
+    list=[]
+    for i in range(len(image)):
+        bf = SolutionBlobFinder(Picture(image[i]), tau)
         currBeads = bf.getBeads(P)
         for currBead in currBeads:
             min_dist = float('inf')
@@ -33,9 +35,9 @@ def main():
                 if d <= delta and d < min_dist:
                     min_dist = d
             if min_dist != float('inf'):
-                stdio.writef('%.4f\n', min_dist)
-        stdio.writeln()
+                list.append(round(min_dist,4))
         prevBeads = currBeads
+    return list
         
 
 if __name__ == '__main__':

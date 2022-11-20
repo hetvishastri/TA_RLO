@@ -11,6 +11,13 @@ from blob_finder import *
 
 from solution_blob import SolutionBlob
 from solution_blob_finder import *
+
+from bead_tracker import *
+from solution_bead_tracker import * 
+
+from avogadro import *
+from solution_avogadro import *
+
 from picture import Picture
 import stdarray, luminance
 import stdio
@@ -31,44 +38,10 @@ class TestAvogadro(unittest.TestCase):
 #     @number("1.1")
     def test_avogadra(self):
         image=['../dataset/run_1/frame00002.jpg']
-        def trackbead(Blobfinder,prevBeads):
-            list=[]
-            for i in range(len(image)):
-                bf = BlobFinder(Picture(image[i]), self.tau)
-                currBeads = bf.getBeads(self.P)
-                for currBead in currBeads:
-                    min_dist = float('inf')
-                    for prevBead in prevBeads:
-                        d = currBead.distanceTo(prevBead)
-                        if d <= self.delta and d < min_dist:
-                            min_dist = d
-                    if min_dist != float('inf'):
-                        list.append(round(min_dist,4))
-                prevBeads = currBeads
-            return list
-
-        def findAvogadroConstant(displacements):
-            n = 0
-            var = 0.00
-            for a in displacements:
-                a = a * (0.175 * (10 ** (-6)))
-                var += a * a
-                n += 1
-            var = var / (2 * n)
-            eta = 9.135 * 10 ** -4
-            rho = 0.5 * 10 ** -6
-            T = 297.0
-            R = 8.31457
-            k = 6 * math.pi * var * eta * rho / T
-            N_A = R / k
-            return k, N_A
-
-        list=trackbead(BlobFinder,self.prevBeads)
-        sol_list=trackbead(SolutionBlobFinder,self.prevBeads_sol)
-
+        list=trackBeads(self.P,self.tau,self.delta,self.bf,image)
+        sol_list=solutiontrackBeads(self.P,self.tau,self.delta,self.sb,image)
         avogadro=findAvogadroConstant(list)
-        sol_avogadro=findAvogadroConstant(sol_list)
-
+        sol_avogadro=solutionfindAvogadroConstant(sol_list)
         self.assertEqual(avogadro,sol_avogadro)
 
 

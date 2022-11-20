@@ -10,6 +10,8 @@ from blob_finder import *
 
 from solution_blob import SolutionBlob
 from solution_blob_finder import *
+from bead_tracker import *
+from solution_bead_tracker import * 
 
 from picture import Picture
 import stdarray, luminance
@@ -31,25 +33,10 @@ class TestBead(unittest.TestCase):
 #     @number("1.1")
     def test_beads(self):
         image=['../dataset/run_1/frame00002.jpg']
-        def trackbead(Blobfinder,prevBeads):
-            list=[]
-            for i in range(len(image)):
-                bf = BlobFinder(Picture(image[i]), self.tau)
-                currBeads = bf.getBeads(self.P)
-                for currBead in currBeads:
-                    min_dist = float('inf')
-                    for prevBead in prevBeads:
-                        d = currBead.distanceTo(prevBead)
-                        if d <= self.delta and d < min_dist:
-                            min_dist = d
-                    if min_dist != float('inf'):
-                        list.append(round(min_dist,4))
-                prevBeads = currBeads
-            return list
-
-        list=trackbead(BlobFinder,self.prevBeads)
-        sol_list=trackbead(SolutionBlobFinder,self.prevBeads_sol)
+        list=trackBeads(self.P,self.tau,self.delta,self.bf,image)
+        sol_list=solutiontrackBeads(self.P,self.tau,self.delta,self.sb,image)
         self.assertListEqual(list,sol_list)
+
 
 
 
