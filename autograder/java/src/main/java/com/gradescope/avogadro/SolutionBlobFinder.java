@@ -59,7 +59,7 @@ public class SolutionBlobFinder {
         int P = Integer.parseInt(args[0]);
         double tau = Double.parseDouble(args[1]);
         Picture picture = new Picture(args[2]);
-        BlobFinder finder = new BlobFinder(picture, tau);
+        SolutionBlobFinder finder = new SolutionBlobFinder(picture, tau);
         int beads = finder.countBeads(P);
         int blobs = finder.countBeads(1);
         System.out.println(beads + " Beads:");

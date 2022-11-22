@@ -15,62 +15,65 @@ import com.gradescope.avogadro.Blob;
 import java.util.*;
 
 public class test_blobfinder {
-    int P = 0;
+    int P = 25;
     double tau = 180.0;
     Picture picture = new Picture("./run_1/frame00000.jpg");
 
     BlobFinder finder = new BlobFinder(picture, tau);
     SolutionBlobFinder solfinder = new SolutionBlobFinder(picture, tau);
 
-
+    @Test
+    @GradedTest(name="Test creating for number of beads from varargs", max_score=1)
     public void test_beads_length(){
         int beads = finder.countBeads(P);
-
-
         int solbeads = solfinder.countBeads(P);
         assertEquals(beads,solbeads);
         
     }
 
+    @Test
+    @GradedTest(name="Test creating for number of blobs from varargs", max_score=1)
     public void test_blob_length(){
 
         int blobs = finder.countBeads(1);
-
         int solblobs = solfinder.countBeads(1);
-
         assertEquals(blobs,solblobs);
         
     }
 
+    @Test
+    @GradedTest(name="Test creating for value of beads from varargs", max_score=1)
     public void test_beads(){
 
         Blob [] tmp = finder.getBeads(P);
-        List<Blob> bead = new ArrayList<>();
+        String [] bead= new String[tmp.length];
         for(int i = 0; i < tmp.length; i++)
-        bead.add(tmp[i]);
+        Arrays.fill(bead, tmp[i].toString());
 
-        Blob [] soltmp = solfinder.getBeads(P);
-        List<Blob> solbead = new ArrayList<>();
-        for(int i = 0; i < soltmp.length; i++)
-        solbead.add(soltmp[i]);
+        Blob [] tmp1 = solfinder.getBeads(P);
+        String [] solbead= new String[tmp1.length];
+        for(int i = 0; i < tmp1.length; i++)
+        Arrays.fill(solbead, tmp[i].toString());
 
-        assertEquals(bead,solbead);
+        assertArrayEquals(bead,solbead);
         
     }
 
+    @Test
+    @GradedTest(name="Test creating for value of blobs from varargs", max_score=1)
     public void test_blob(){
 
         Blob [] tmp = finder.getBeads(1);
-        List<Blob> blob = new ArrayList<>();
+        String [] blob= new String[tmp.length];
         for(int i = 0; i < tmp.length; i++)
-        blob.add(tmp[i]);
+        Arrays.fill(blob, tmp[i].toString());
 
-        Blob [] soltmp = solfinder.getBeads(1);
-        List<Blob> solblob = new ArrayList<>();
-        for(int i = 0; i < soltmp.length; i++)
-        solblob.add(soltmp[i]);
+        Blob [] tmp1 = solfinder.getBeads(1);
+        String [] solblob= new String[tmp1.length];
+        for(int i = 0; i < tmp1.length; i++)
+        Arrays.fill(solblob, tmp[i].toString());
 
-        assertEquals(blob,solblob);
+        assertArrayEquals(blob,solblob);
         
     }
 
