@@ -1,3 +1,0 @@
-pillow
-gradescope-utils
-timeout-decorator
