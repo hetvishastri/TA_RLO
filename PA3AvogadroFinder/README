@@ -1,0 +1,29 @@
+The folder contains the following:
+
+1. autograder: This folder is to be uploaded on gradescope. It contains two directories:
+
+   1.1 python: The solution source code is in files that begin with solution_*.
+       	       The test cases are provided in the folder tests/. Run the file run_tests.py in the python directory
+	       to run all the test cases.
+
+   1.2 java: The source code is found in the directory ./java/src/main/java/com/gradescope/avogadro/. The solution files
+             are of form Solution*.java. The test cases are in ./java/src/main/java/com/gradescope/avogadro/tests.
+	     
+	     - To compile:
+	     	cd ./java/src/main/java/
+		./compile.sh
+
+	     - To run test cases locally:
+	        cd ./java/src/main/java/
+	       	./run.sh
+
+   The results after running the test cases will be in ./results/result.json 
+   Please refer to run_autograder to get a better understanding
+
+2. student_submission: To be hander over to the students for coding. The students have to submit the following files as a zip
+
+   		       Python: blob_finder.py, bead_tracker.py and avogadro.py
+		       Java:   BlobFinder.java, BeadTracker.java and Avogadro.java
+
+3. problem_statement: The tex files that describe the problem statement is in the folder.
+       	     

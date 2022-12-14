@@ -1,0 +1,53 @@
+#!/usr/bin/env bash                                                                                                                                                                                                                                                                                                                                                       
+
+# Set up autograder files                                                                                                                                                                                                                                                                                                                                                 
+if [ -f "/autograder/submission/avogadro.py" ]; then
+    cp /autograder/submission/avogadro.py /autograder/source/python/avogadro.py
+
+    if [ -f "/autograder/submission/blob_finder.py" ]; then
+	cp /autograder/submission/blob_finder.py /autograder/source/python/blob_finder.py
+    else
+	echo "Cannot find blob_finder.py in submission. Is the file named correctly?"
+    fi
+    
+    if [ -f "/autograder/submission/bead_tracker.py" ]; then
+	cp /autograder/submission/bead_tracker.py /autograder/source/python/bead_tracker.py
+    else
+	echo "Cannot find bead_tracker.py in submission. Is the file named correctly?"
+    fi
+    
+    cd /autograder/source
+    python3 ./python/run_tests.py | sed -e '1,2d' > ../results/results.json
+    #python3 ./python/run_tests.py
+
+
+elif [ -f "/autograder/submission/Avogadro.java" ]; then
+	cp /autograder/submission/Avogadro.java /autograder/source/java/src/main/java/com/gradescope/avogadro/Avogadro.java
+    
+    if [ -f "/autograder/submission/BeadTracker.java" ]; then
+	cp /autograder/submission/BeadTracker.java /autograder/source/java/src/main/java/com/gradescope/avogadro/BeadTracker.java
+    else
+	echo "Cannot find BeadTracker.java in submission. Is the file named correctly?"
+    fi
+
+    if [ -f "/autograder/submission/BlobFinder.java" ]; then
+	cp /autograder/submission/BlobFinder.java /autograder/source/java/src/main/java/com/gradescope/avogadro/BlobFinder.java
+    else
+	echo "Cannot find BlobFinder.java in submission. Is the file named correctly?"
+    fi
+
+
+    cd /autograder/source/java/src/main/java    
+    # Compile the student's code with autograder code
+    bash ./compile.sh
+
+    # Run the autograder code
+    bash ./run.sh > ../../../../../results/results.json 
+fi
+
+
+
+#- autograder
+#    - source
+#    - submission
+#    - results
